@@ -101,16 +101,19 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: whoami5
+  name: whoami
   # namespace: whoami5
   annotations:
     allow.http: "false"
 spec:
   rules:
-  - host: app.rancher.devopsforlife.io
+  - host: app.rancher.devops-sop.local
     http:
       paths:
         - path: /
+          pathType: Prefix
           backend:
-            name: whoami5
-            port: 80 # Porta que sera usada pelo SERVICE - DEVE SER A MESMA do SERVICE
+            service: 
+              name: whoami5
+              port: 
+                number: 80 # Porta que sera usada pelo SERVICE - DEVE SER A MESMA do SERVICE
